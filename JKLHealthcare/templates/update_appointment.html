@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Appointment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Update Appointment</h1>
+        <form action="{{ url_for('update_appointment', appointment_id=appointment.id) }}" method="POST">
+            <input type="datetime-local" name="appointment_time" value="{{ appointment.appointment_time.strftime('%Y-%m-%dT%H:%M:%S') }}" required><br>
+            <button type="submit">Update Appointment</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Patient Info</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Your Information</h1>
+        <form action="{{ url_for('edit_patient_info') }}" method="POST">
+            <input type="text" name="name" value="{{ patient.name }}" placeholder="Name" required><br>
+            <input type="text" name="address" value="{{ patient.address }}" placeholder="Address" required><br>
+            <textarea name="medical_records" placeholder="Medical Records">{{ patient.medical_records }}</textarea><br>
+            <input type="text" name="phone" value="{{ patient.phone }}" placeholder="Phone" required><br>
+            <input type="date" name="dob" value="{{ patient.dob.strftime('%Y-%m-%d') }}" required><br>
+            <input type="text" name="gender" value="{{ patient.gender }}" placeholder="Gender" required><br>
+            <button type="submit">Update Information</button>
+        </form>
+    </div>
+</body>
+</html>

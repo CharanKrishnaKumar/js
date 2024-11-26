@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <nav>
+            <a href="{{ url_for('logout') }}" style="color: red;">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Patients</h2>
+            <ul>
+                {% for patient in patients %}
+                <li>{{ patient.name }} - 
+                    <a href="{{ url_for('assign_caregiver', patient_id=patient.id) }}">Assign Caregiver</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h2>Caregivers</h2>
+            <ul>
+                {% for caregiver in caregivers %}
+                <li>{{ caregiver.name }} - 
+                    <a href="#">View Assignments</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

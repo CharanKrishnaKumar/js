@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ patient.name }}'s Dashboard</h1>
+        <p>Address: {{ patient.address }}</p>
+        <p>Phone: {{ patient.phone }}</p>
+        <p>DOB: {{ patient.dob }}</p>
+        <p>Gender: {{ patient.gender }}</p>
+        <h2>Appointments</h2>
+        <ul>
+            {% for appointment in appointments %}
+                <li>
+                    Appointment with Caregiver {{ appointment.caregiver.name }} at {{ appointment.appointment_time }} - Status: {{ appointment.status }}
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('edit_patient_info') }}">Edit Your Information</a>
+    </div>
+</body>
+</html>

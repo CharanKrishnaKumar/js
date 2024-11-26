@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assign Caregiver</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Assign Caregiver to {{ patient.name }}</h1>
+        <form action="{{ url_for('assign_caregiver', patient_id=patient.id) }}" method="POST">
+            <select name="caregiver_id" required>
+                {% for caregiver in caregivers %}
+                    <option value="{{ caregiver.id }}">{{ caregiver.name }}</option>
+                {% endfor %}
+            </select><br>
+            <input type="datetime-local" name="start_time" required><br>
+            <input type="datetime-local" name="end_time" required><br>
+            <button type="submit">Assign Caregiver</button>
+        </form>
+    </div>
+</body>
+</html>

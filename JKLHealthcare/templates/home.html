@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Healthcare App</h1>
+        <p>
+            {% if 'user_id' in session %}
+                Welcome back, {{ session['role'] }}!
+                <br>
+                <a href="{{ url_for(session['role'] + '_dashboard') }}">Go to your dashboard</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Login</a> or <a href="{{ url_for('register') }}">Register</a>
+            {% endif %}
+        </p>
+    </div>
+</body>
+</html>
